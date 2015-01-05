@@ -586,6 +586,16 @@ class Widget_Archive extends Widget_Abstract_Contents
         return ceil($this->getTotal() / $this->parameter->pageSize);
     }
 
+    public function getLastIndex()
+    {
+        $page = $this->getCurrentPage();
+        if ($page == 1) {
+            return $this->getTotal();
+        } else {
+            return $this->getTotal() - $this->parameter->pageSize * ($page - 1);
+        }
+    }
+
     /**
      * @return the $_themeFile
      */
